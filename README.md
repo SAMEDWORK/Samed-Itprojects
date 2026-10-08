@@ -1,65 +1,61 @@
-# Samed-Itprojects
-# Data Science Fundamentals Assessment: Iris Dataset Analysis
+# Hands-On Data Lab Implementation: Titanic Dataset
 
 ## Description
-This project applies core data science fundamentals to the classic Iris flower dataset. It covers Python programming, data cleaning, statistical analysis, and exploratory data analysis (EDA), and ends with a documented analysis report. The goal is to understand which flower measurements best distinguish the three iris species.
+This project is a hands-on data lab that walks through a complete Python data science workflow on the Titanic passenger dataset. It covers environment setup, data exploration, manipulation, cleaning, visualization, and basic analysis, using Pandas, NumPy, Matplotlib, and Seaborn in a Jupyter Notebook. The goal is to understand which factors influenced passenger survival.
 
-Completed as **Task 1** of the Data Science Consultant Internship.
+Completed as **Task 2** of the Data Science Consultant Internship.
 
 ## Dataset Information
 | Property | Details |
 |---|---|
-| Name | Iris Dataset |
-| Source | scikit-learn built-in datasets (originally from the UCI Machine Learning Repository) |
-| Records | 150 observations (149 after removing 1 duplicate) |
-| Features | Sepal length, sepal width, petal length, petal width (all in cm) |
-| Target | Species: setosa, versicolor, virginica (50 samples each) |
-| Missing values | None |
-
-**Business context:** classifying a species from measurable features, similar to any problem where an item must be categorized from its attributes (e.g. quality grading, product categorization).
+| Name | Titanic Dataset |
+| Source | Seaborn built-in datasets (`sns.load_dataset('titanic')`) |
+| Records | 891 passengers |
+| Columns | 15 (age, sex, pclass, fare, sibsp, parch, embarked, class, who, deck, alive, and more) |
+| Target | `survived` (0 = did not survive, 1 = survived) |
+| Missing values | `deck` (most rows), `age`, and a few `embarked` / `embark_town` entries |
 
 ## Project Steps
-1. **Understand the dataset:** examine columns, data types, structure, and class balance.
-2. **Apply Python fundamentals:** use data structures, functions, loops, conditionals, Pandas, and NumPy.
-3. **Clean the data:** check for missing values, duplicates, inconsistent labels, and incorrect data types; remove the duplicate record.
-4. **Apply statistical concepts:** calculate mean, median, mode, standard deviation, variance, and correlations.
-5. **Perform exploratory data analysis:** build histograms, box plots, a correlation heatmap, a scatter plot, and a bar chart.
-6. **Prepare the analysis report:** document the methodology, data preparation, statistical results, visualizations, and conclusions.
+1. **Set up the environment:** import Pandas, NumPy, Matplotlib, and Seaborn, and configure display and plot settings.
+2. **Import and explore the data:** load the dataset and inspect it with `.head()`, `.info()`, and `.describe()`, then check for missing values.
+3. **Manipulate the data:** filter (first-class female passengers), sort by fare, group survival rate by class and gender, and engineer new columns (`age_group`, `family_size`).
+4. **Clean the data:** impute missing `age` with the median, drop the sparse `deck` column, fill missing `embarked` values with the mode, remove duplicates, and convert categorical columns to the correct data type.
+5. **Visualize the data:** bar chart (survival by gender), histogram (age distribution), box plot (fare by class), and correlation heatmap.
+6. **Analyze and summarize:** compute survival statistics and document the key insights.
 
 ## Key Findings
-- Petal length and petal width are the most informative features: they have the highest variance and are very strongly correlated (r ≈ 0.96).
-- Setosa forms a clearly separate cluster, while versicolor and virginica partially overlap.
-- Sepal width has the lowest variance and weak negative correlations with the other features, making it the weakest single predictor.
-- **Recommendation:** prioritize petal length and petal width for any classification rule or model.
+- Gender was the strongest predictor of survival: women survived at a far higher rate than men.
+- Passenger class had a clear effect: 1st class had the highest survival rate and 3rd class the lowest.
+- Fare and class are closely related (higher class, higher fare).
+- Small families (2 to 4 members) tended to survive more often than passengers travelling alone or in very large families.
 
 ## Tools & Libraries
 - Python 3
 - Pandas, NumPy
 - Matplotlib, Seaborn
-- scikit-learn (dataset loading only)
 - Jupyter Notebook
 
 ## Repository Structure
 ```
-├── Data_Science_Fundamentals_Iris.ipynb   # Full analysis code with explanations
-├── Iris_Data_Analysis_Report.docx         # Written analysis report
+├── Titanic_Data_Lab.ipynb          # Full lab code with explanations
+├── Titanic_Data_Lab_Report.docx    # Written lab report
 └── README.md
 ```
 
 ## How to Run
 1. Clone the repository:
 ```bash
-   git clone https://github.com/SAMEDWORK/<your-repo-name>.git
+   git clone https://github.com/SAMEDWORK/samed-itsprojects.git
 ```
 2. Install the required libraries:
 ```bash
-   pip install pandas numpy matplotlib seaborn scikit-learn jupyter
+   pip install pandas numpy matplotlib seaborn jupyter
 ```
 3. Launch Jupyter and open the notebook:
 ```bash
-   jupyter notebook Data_Science_Fundamentals_Iris.ipynb
+   jupyter notebook Titanic_Data_Lab.ipynb
 ```
-4. Run all cells from top to bottom.
+4. Run all cells from top to bottom. An internet connection is needed the first time, because Seaborn downloads the Titanic dataset.
 
 ## Author
 **Mohamed Samed**
